@@ -1,5 +1,4 @@
-terraform {
-  /*
+terraform {  
   cloud {
     organization = "tanure-teste"
 
@@ -7,7 +6,7 @@ terraform {
       name = "learn-terraform-cloud"
     }
   }
-*/
+  
   required_providers {
     aws = {
       source  = "hashicorp/aws"
