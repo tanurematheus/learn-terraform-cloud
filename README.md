@@ -19,7 +19,7 @@ The values for `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` should be saved a
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | 1.2.6 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 3.28.0 |
 
 ## Providers
