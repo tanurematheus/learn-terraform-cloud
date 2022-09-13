@@ -45,7 +45,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_instance_name"></a> [instance\_name](#input\_instance\_name) | EC2 instance name | `string` | `"Provisioned by Terraform"` | no |
 | <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | Type of EC2 instance to provision | `string` | `"t2.micro"` | no |
-| <a name="input_region"></a> [region](#input\_region) | AWS region | `string` | `"us-west-1"` | no |
+| <a name="input_region"></a> [region](#input\_region) | AWS region | `string` | `"us-east-1"` | no |
 
 ## Outputs
 
