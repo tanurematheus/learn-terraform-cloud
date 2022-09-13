@@ -17,20 +17,17 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
 
       - name: Setup terraform
-        uses: hashicorp/setup-terraform@v2
+        uses: hashicorp/setup-terraform@v1
         with:
-          terraform_version: 1.2.6
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
       - name: Run terraform fmt check
         id: fmt
-        run: terraform fmt -check -diff -recursive
+        run: terraform fmt -check
 
       - name: Run terraform init
         id: init
-        run: terraform init -input=false
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: terraform init -input=false      
       
       - name: Run terraform validate
         id: validate
@@ -96,6 +93,8 @@ jobs:
     name: terraform push
     runs-on: ubuntu-20.04    
     steps:
+      - uses: actions/checkout@master
+
       - name: Run terraform init
         id: init
         run: terraform init -input=false  
