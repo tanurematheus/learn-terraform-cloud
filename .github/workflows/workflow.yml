@@ -86,22 +86,4 @@ jobs:
           working-dir: .
           output-file: README.md
           output-method: inject
-          git-push: "true"      
-
-  push:
-    if: github.event_name == 'push'
-    name: terraform push
-    runs-on: ubuntu-20.04    
-    steps:
-      - uses: actions/checkout@master
-
-      - name: Run terraform init
-        id: init
-        run: terraform init -input=false  
-            
-      - name: Terraform Apply        
-        run: terraform apply -auto-approve -input=false
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        
+          git-push: "true"     
