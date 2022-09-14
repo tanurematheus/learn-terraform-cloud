@@ -2,14 +2,14 @@ name: Terraform
 on:
   push:
     branches:
-      - main    
+      - main
   pull_request:
 
 jobs:
   pr:
     if: github.event_name == 'pull_request'
     name: terraform pr
-    runs-on: ubuntu-20.04    
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout pr
         uses: actions/checkout@v3
@@ -19,7 +19,7 @@ jobs:
       - name: Setup terraform
         uses: hashicorp/setup-terraform@v1
         with:
-          terraform_version: 1.2.6
+          terraform_version: 1.2.9
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
       - name: Run terraform fmt check
@@ -28,15 +28,15 @@ jobs:
 
       - name: Run terraform init
         id: init
-        run: terraform init -input=false      
-      
+        run: terraform init -input=false
+
       - name: Run terraform validate
         id: validate
         run: terraform validate -no-color
 
       - uses: terraform-linters/setup-tflint@v2
 
-      - name: Init TFLint       
+      - name: Init TFLint
         run: tflint --init
 
       - name: Run TFLint
@@ -55,8 +55,8 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        
-      - uses: actions/github-script@v6     
+
+      - uses: actions/github-script@v6
         env:
           PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
         with:
@@ -80,11 +80,11 @@ jobs:
                 repo: context.repo.repo,
                 body: output
               })
-      
+
       - name: Render terraform docs inside the README.md and push changes back to PR branch
         uses: terraform-docs/gh-actions@v1.0.0
         with:
           working-dir: .
           output-file: README.md
           output-method: inject
-          git-push: "true"     
+          git-push: "true"
