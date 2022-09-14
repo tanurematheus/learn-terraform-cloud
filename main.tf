@@ -17,7 +17,14 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "ubuntu" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
-
+  monitoring    = true
+  ebs_optimized = true
+  root_block_device {
+    encrypted = true
+  }
+  metadata_options {
+    http_tokens = "required"
+  }
   tags = {
     Name = var.instance_name
   }
