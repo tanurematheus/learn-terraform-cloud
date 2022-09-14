@@ -54,3 +54,44 @@ No modules.
 | <a name="output_instance_ami"></a> [instance\_ami](#output\_instance\_ami) | n/a |
 | <a name="output_instance_arn"></a> [instance\_arn](#output\_instance\_arn) | n/a |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
+<!-- BEGIN_TF_DOCS -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | 1.2.9 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 3.28.0 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.28.0 |
+
+## Modules
+
+No modules.
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [aws_instance.ubuntu](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance) | resource |
+| [aws_ami.ubuntu](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ami) | data source |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_instance_name"></a> [instance\_name](#input\_instance\_name) | EC2 instance name | `string` | `"Provisioned by Terraform"` | no |
+| <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | Type of EC2 instance to provision | `string` | `"t2.micro"` | no |
+| <a name="input_region"></a> [region](#input\_region) | AWS region | `string` | `"us-east-1"` | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_instance_ami"></a> [instance\_ami](#output\_instance\_ami) | n/a |
+| <a name="output_instance_arn"></a> [instance\_arn](#output\_instance\_arn) | n/a |
+<!-- END_TF_DOCS -->
